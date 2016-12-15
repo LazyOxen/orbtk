@@ -12,6 +12,6 @@ name = "orbtk"
 path = "src/lib.rs"
 
 [dependencies]
-orbclient = {git = "git://github.com/LazyOxen/orbclient", branch = "linear_gradient"}
-orbfont = "0.1"
-orbimage = "0.1"
+orbclient = {git = "git://github.com/LazyOxen/orbclient", branch="lin_gradient"}
+orbfont = {git = "git://github.com/LazyOxen/orbfont"}
+orbimage = {git = "git://github.com/LazyOxen/orbimage"}

@@ -57,8 +57,10 @@ impl<'a> Renderer for WindowRenderer<'a> {
     }
 
     fn linear_gradient(&mut self, bounding_area: Rect, start: Point, end: Point, start_color: Color, end_color: Color) {
-        self.inner.linear_gradient(bounding_area, start.x, start.y, end.x, end.y, start_color, end_color);
+        self.inner.linear_gradient(bounding_area.x, bounding_area.y, bounding_area.width, bounding_area.height,
+                                   start.x, start.y, end.x, end.y, start_color, end_color);
     }
+    
 }
 
 impl<'a> Drop for WindowRenderer<'a> {
@@ -101,11 +103,13 @@ impl Window {
 
     pub fn draw(&self) {
         let mut inner = self.inner.borrow_mut();
+        
         let start = Point::new(0,0);
         let end = Point::new(inner.width() as i32, inner.height() as i32);
         let start_color = Color::rgb(255, 255, 255);
-        let end_color = Color::rgb(0, 0, 0);
+        let end_color = Color::rgb(82, 158, 251);
         let bounded_area = Rect::new(0, 0, inner.width(), inner.height());
+        
         let mut renderer = WindowRenderer::new(&mut *inner, &self.font);
         //renderer.clear(self.bg);
         renderer.linear_gradient(bounded_area, start, end, start_color, end_color);
